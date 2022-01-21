@@ -5,6 +5,6 @@ WORKDIR practica_creativa2/bookinfo/src/productpage
 RUN pip3 install -r requirements.txt
 ENV GROUP_NUMBER 18
 EXPOSE 9080
-COPY modificahtml.py /home
-ENTRYPOINT python3 modificahtml.py
-CMD["python3","productpage_monolith.py"]
+COPY modificahtml.py /bookinfo/src/productpage
+
+CMD["python3","modificahtml.py"]
