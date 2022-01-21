@@ -7,4 +7,4 @@ ENV GROUP_NUMBER 18
 EXPOSE 9080
 COPY modificarhtml.py /bookinfo/src/productpage
 
-CMD["python3","modificarhtml.py"]
+CMD ["python3","modificarhtml.py"]
