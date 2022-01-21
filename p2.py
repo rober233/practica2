@@ -12,7 +12,7 @@ call(["sudo apt-get -y update "], shell=True)
 call(["sudo apt-get -y install python3-pip "], shell=True)
 
 #Instalamos la lista de dependencias 
-call(["sudo pip3 install -r p2/bookinfo/src/productpage/requirements.txt"], shell=True)
+call(["sudo pip3 install -r practica_creativa2/bookinfo/src/productpage/requirements.txt"], shell=True)
 
 #Creamos la variable del entorno
 os.environ['GROUP_NUMBER']="18"
