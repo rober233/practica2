@@ -3,6 +3,7 @@ from subprocess import call
 import os
 import sys
 
+cwd = str(os.getcwd())
 #Descarga de la aplicacion 
 
 call(['git clone https://github.com/CDPS-ETSIT/practica_creativa2.git'], shell=True)
@@ -19,20 +20,15 @@ os.environ['GROUP_NUMBER']="18"
 num_grupo= str(os.environ.get('GROUP_NUMBER'))
 
 #Modificamos el titulo
-fin = open("practica_creativa2/bookinfo/src/productpage/templates/productpage.html", 'r') # in file
-fout = open("productpage1.html", 'w') # out file
-for line in fin:
+call(['cp /practica_creativa2/bookinfo/src/productpage/templates/productpage.html '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html'], shell=True)
+copia = open('/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html', 'r')
+f = open('/practica_creativa2/bookinfo/src/productpage/templates/productpage.html', 'w')
+for line in copia:
     if "{% block title %}Simple Bookstore App{% endblock %}" in line:
-        fout.write("{% block title %} Equipo: "+num_grupo+"{% endblock %}")
-    else :
-        fout.write(line)
-fin.close()
-fout.close()
-
-call(["mv","productpage1.html","practica_creativa2/bookinfo/src/productpage/templates/productpage.html"], shell=True)
-
-#Cambiamos el puerto para lanzar la aplicacion
-
+        f.write("{% block title %}" + num_grupo + "{% endblock %}")
+    else:
+        f.write(line)
+f.close()
 
 #Lanzamos la aplicacion
 call(["sudo python3 practica_creativa2/bookinfo/src/productpage/productpage_monolith.py 9088"], shell=True)
