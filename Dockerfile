@@ -6,6 +6,6 @@ WORKDIR practica_creativa2/bookinfo/src/productpage
 RUN pip3 install -r requirements.txt
 ENV GROUP_NUMBER 18
 EXPOSE 9080
-COPY modificarhtml.py /bookinfo/src/productpage
+COPY modificarhtml.py .
 
 CMD ["python3","modificarhtml.py"]
