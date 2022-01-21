@@ -20,8 +20,8 @@ os.environ['GROUP_NUMBER']="18"
 num_grupo= str(os.environ.get('GROUP_NUMBER'))
 
 #Modificamos el titulo
-call(['cp '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage.html '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage2.html'], shell=True)
-copia = open( cwd + '/practica_creativa2/bookinfo/src/productpage/templates/productpage2.html', 'r')
+call(['cp '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage.html '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html'], shell=True)
+copia = open( cwd + '/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html', 'r')
 f = open( cwd + '/practica_creativa2/bookinfo/src/productpage/templates/productpage.html', 'w')
 for line in copia:
     if "{% block title %}Simple Bookstore App{% endblock %}" in line:
@@ -30,7 +30,7 @@ for line in copia:
         f.write(line)
 f.close()
 copia.close()
-call(['rm '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage2.html'],shell=True)
+call(['rm '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html'],shell=True)
 
 #Lanzamos la aplicacion
-call(["sudo python3 practica_creativa2/bookinfo/src/productpage/productpage_monolith.py 9089"], shell=True)
+call(["sudo python3 practica_creativa2/bookinfo/src/productpage/productpage_monolith.py 9090"], shell=True)
