@@ -1,23 +1,25 @@
 #! /usr/bin/python
 from subprocess import call
-import sys
 import os
+import sys
 
-fin=open("bookinfo/src/productpage/templates/productpage.html", "r")
-fout=open("bookinfo/src/productpage/templates/index2.html", "w")
+cwd = str(os.getcwd())
 
-for line in fin:
-    if "Simple Bookstore App" in line:
-            fout.write("{% block title %}Simple Bookstore App "+os.environ['GROUP_NAME']+"{% endblock %}")
+#Creamos la variable del entorno
+os.environ['GROUP_NUMBER']="18"
+num_grupo= str(os.environ.get('GROUP_NUMBER'))
+
+#Modificamos el titulo
+call(['cp '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage.html '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html'], shell=True)
+copia = open( cwd + '/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html', 'r')
+f = open( cwd + '/practica_creativa2/bookinfo/src/productpage/templates/productpage.html', 'w')
+for line in copia:
+    if "{% block title %}Simple Bookstore App{% endblock %}" in line:
+        f.write("{% block title %}" + num_grupo + "{% endblock %}")
     else:
-            fout.write(line)
-fin.close()
-fout.close()
-
-call(["rm bookinfo/src/productpage/templates/productpage.html"], shell=True)
-call(["mv bookinfo/src/productpage/templates/index2.html p2/bookinfo/src/productpage/templates/productpage.html"], shell=True)
-
-#Habilitamos el puerto 9080
-call(["sudo gcloud compute firewall-rules create habilita9080 --allow tcp:9080"], shell=True)
+        f.write(line)
+f.close()
+copia.close()
+call(['rm '+cwd+'/practica_creativa2/bookinfo/src/productpage/templates/productpage1.html'],shell=True)
 #Lanzamos la aplicacion
-call(["sudo python3 bookinfo/src/productpage/productpage_monolith.py 9080"], shell=True)
+call(["sudo python3 practica_creativa2/bookinfo/src/productpage/productpage_monolith.py 9080"], shell=True)
