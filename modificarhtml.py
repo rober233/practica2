@@ -22,4 +22,4 @@ f.close()
 copia.close()
 call(['rm '+cwd+'/templates/productpage1.html'],shell=True)
 #Lanzamos la aplicacion
-call(["sudo python3 productpage_monolith.py 9080"], shell=True)
+call(["python3 productpage_monolith.py 9080"], shell=True)
